@@ -2,7 +2,7 @@
 import { DOMAIN } from "@/utils/constants";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 interface EditArticleProps {

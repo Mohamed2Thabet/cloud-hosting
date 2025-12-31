@@ -12,7 +12,6 @@ import {
   Users,
   Settings,
   BarChart3,
-  Tags,
   Menu,
   X,
 } from "lucide-react";
