@@ -7,6 +7,8 @@ interface PaginationProps {
 }
 
 export default function Pagination({ pageNumber, pages, route }: PaginationProps) {
+  if (pages <= 1) return null;
+
   const delta = 2; // عدد الصفحات حول الصفحة الحالية
   const range: (number | string)[] = [];
 
@@ -54,7 +56,7 @@ export default function Pagination({ pageNumber, pages, route }: PaginationProps
         {/* Pages */}
         {range.map((p, index) =>
           p === "..." ? (
-            <span key={index} className="px-2 text-gray-400 select-none">
+            <span key={`dots-${index}`} className="px-2 text-gray-400 select-none">
               ...
             </span>
           ) : (

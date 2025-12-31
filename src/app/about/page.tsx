@@ -1,6 +1,6 @@
 import React from 'react'
 import CluodImage from '../../../public/cloud-hosting.png'
-import Image from 'next/image'
+import Image from 'next/image'    
 export default function AboutPage() {
   return (
     <section className=' container mx-auto min-h-[calc(100vh-(80px+92px))] flex flex-col justify-center items-center'>

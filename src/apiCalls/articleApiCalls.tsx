@@ -46,3 +46,19 @@ const response = await fetch(`${DOMAIN}/api/articles/${articleId}`,{cache:"no-st
   }
   return response.json();
 }
+export async function getUsersCount():Promise<number> {
+const response = await fetch(`http://localhost:3000/api/users/count`);
+  if (!response.ok) {
+    throw new Error("Failed  to get articles count");
+  }
+  const {count} =( await response.json()) as {count:number};
+  return count;
+}
+export async function getCommentsCount():Promise<number> {
+const response = await fetch(`http://localhost:3000/api/comments/count`);
+  if (!response.ok) {
+    throw new Error("Failed  to get articles count");
+  }
+  const {count} =( await response.json()) as {count:number};
+  return count;
+}
