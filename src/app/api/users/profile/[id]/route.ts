@@ -71,7 +71,7 @@ export async function DELETE(
 export async function GET(
   request: Request,
   context: { params: Promise<{ id: string }> } 
-) {{
+) {
   try {
     const { id } = await context.params;   
     const userId = parseInt(id);
@@ -93,7 +93,7 @@ export async function GET(
     console.error("Get User Profile Error:", error);
     return Response.json({ message: "Internal server error" }, { status: 500 });
   }
-}}
+}
 
 /**
  * @method PUT
@@ -131,20 +131,18 @@ export async function PUT(
     const body = await request.json() as UpdateUserDTO;
     const validation = updateUserSchema.safeParse(body)
     if(!validation.success)
-      return Response.json({message:validation.error.errors[0].message},{status:400})
+      return Response.json({message:validation.error.issues[0].message},{status:400})
     // Handle password hashing
     let hashedPassword: string | undefined;
-    const password = createPasswordSchema.safeParse(body.password);
-
-    if (!password.success) {
-      return Response.json(
-        { message: "Invalid password format"},
-        { status: 400 }
-      );
-    }
-
 
     if (body.password) {
+      const password = createPasswordSchema.safeParse(body.password);
+      if (!password.success) {
+        return Response.json(
+          { message: "Invalid password format"},
+          { status: 400 }
+        );
+      }
       const salt = await bcrypt.genSalt(10);
       hashedPassword = await bcrypt.hash(body.password, salt);
     }

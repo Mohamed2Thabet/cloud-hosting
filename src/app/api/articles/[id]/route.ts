@@ -39,7 +39,7 @@ export async function GET(
       return Response.json({ message: "Article not found" }, { status: 404 });
     }
     return Response.json(article, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }
@@ -73,8 +73,8 @@ export async function PUT(
       { message: "Article updated", article: updatedArticle },
       { status: 200 }
     );
-  } catch (error: any) {
-    if (error.code === "P2025") {
+  } catch (error: unknown) {
+    if (typeof error === 'object' && error !== null && 'code' in error && error.code === "P2025") {
       return Response.json({ message: "Article not found" }, { status: 404 });
     }
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
@@ -119,8 +119,8 @@ export async function DELETE(
       { message: "Article deleted" },
       { status: 200 }
     );
-  } catch (error: any) {
-    if (error.code === "P2025") {
+  } catch (error: unknown) {
+    if (typeof error === 'object' && error !== null && 'code' in error && error.code === "P2025") {
       return Response.json({ message: "Article not found" }, { status: 404 });
     }
     return Response.json({ message: "Internal Server Error" }, { status: 500 });
