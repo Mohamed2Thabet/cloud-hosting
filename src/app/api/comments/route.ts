@@ -18,7 +18,6 @@ export async function POST(request: Request) {
       return Response.json({ message: "Not authorized" }, { status: 403 });
     }
     const body = (await request.json()) as CreateCommentDTO;
-    console.log(body.text);
     const validatedBody = createCommentSchema.safeParse(body); // Validate the request body
     if (!validatedBody.success) {
       return Response.json(

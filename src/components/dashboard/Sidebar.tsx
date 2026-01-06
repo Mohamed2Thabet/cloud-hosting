@@ -42,8 +42,8 @@ export default function Sidebar() {
       title: "Comments",
       icon: MessageSquare,
       subItems: [
-        { title: "Create Comments", icon: MessagesSquare, href: "/admin/comments" },
-        { title: "Pending Review", icon: MessageSquare, href: "/admin/comments/pending" },
+        { title: "All Comments", icon: MessagesSquare, href: "/admin/comments" },
+        // { title: "Pending Review", icon: MessageSquare, href: "/admin/comments/pending" },
       ],
     },
     {
