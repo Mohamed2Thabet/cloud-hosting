@@ -20,7 +20,6 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    console.log(body);
     const userExists = await prisma.user.findUnique({
       where: { email: body.email },
     });
