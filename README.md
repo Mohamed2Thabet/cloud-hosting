@@ -19,7 +19,7 @@ This application serves as a robust platform for content management and cloud re
 
 ## Tech Stack
 
-- **Frontend**: Next.js (App Router), React
+- **Frontend**: Next.js (App Router), React, React Icons
 - **Backend**: Next.js API Routes (Serverless functions)
 - **Database**: PostgreSQL
 - **ORM**: Prisma
@@ -78,7 +78,7 @@ NODE_ENV="development"
    npm run dev
    ```
 
-The application will be available at `http://localhost:3000`.
+The application will be available at `https://cloud-hosting-inky.vercel.app/`.
 
 ## Scripts
 
