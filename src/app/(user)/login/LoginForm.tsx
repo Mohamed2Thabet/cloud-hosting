@@ -4,8 +4,6 @@ import React ,{useState} from 'react'
 import axios ,{AxiosError } from "axios"
 import {toast} from "react-toastify"
 import { DOMAIN } from '@/utils/constants';
-import { truncate } from 'node:fs';
-import { TruckElectricIcon } from 'lucide-react';
 import ButtonSpinner from '@/components/ButtonSpinner';
 const LoginForm =  () => {
     const [email, setEmail] = useState('');

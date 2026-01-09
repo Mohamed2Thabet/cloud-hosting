@@ -1,7 +1,6 @@
 import { DOMAIN } from "@/utils/constants";
 import { getToken } from "@/utils/generateToken";
 import { Comment } from "@prisma/client";   
-import { cookies } from "next/headers";
 export async function  getAllComments(): Promise<Comment[]> {
     const token = await getToken()
 
