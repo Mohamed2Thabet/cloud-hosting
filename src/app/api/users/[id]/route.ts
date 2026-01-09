@@ -29,10 +29,9 @@ export async function DELETE(
       return Response.json({ message: "User not found" }, { status: 404 });
     }
 
-    const decoded = verifyToken(request); ;
+    const decoded = verifyToken(request);
     
-
-    if (decoded?.isAdmin !== true) {
+    if (!decoded || (decoded.isAdmin !== true && decoded.userId !== userId)) {
       return Response.json({ message: "Not authorized" }, { status: 403 });
     }
 

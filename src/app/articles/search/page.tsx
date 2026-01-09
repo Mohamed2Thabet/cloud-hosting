@@ -3,12 +3,13 @@ import ArticleItem from "@/components/articles/ArticleItem";
 import { Article } from "@prisma/client";
 
 interface SearchPageProps {
-  searchParams: { searchText: string };
+  searchParams: Promise<{ searchText: string }>;
 }
 
 export default async function SearchPage({
-  searchParams: { searchText },
+  searchParams,
 }: SearchPageProps) {
+  const { searchText } = await searchParams;
   const articles: Article[] = await getArticlesSearch(searchText);
   return (
     <div className="min-h-screen p-6 bg-gray-100">

@@ -36,7 +36,7 @@ export function middleware(request: NextRequest) {
           token,
           process.env.JWT_SECRET!
         ) as { isAdmin: boolean };
-
+        console.log(decoded);
         if (!decoded.isAdmin) {
           return NextResponse.redirect(new URL("/", request.url));
         }
