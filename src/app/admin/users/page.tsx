@@ -63,7 +63,7 @@ export default async function UserPage() {
               }`}><div>{user.isAdmin ? 'Administrator' : 'Regular User'}</div>    </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex items-center gap-2">
-                        <AdminSelectMenu  isAdmin={user.isAdmin}/>
+                        <AdminSelectMenu  isAdmin={user.isAdmin} userId={user.id}/>
                         <DeleteUser userId={user.id} />
                       </div>
                     </td>

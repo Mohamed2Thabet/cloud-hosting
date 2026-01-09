@@ -24,6 +24,9 @@ export async function GET(request: Request) {
         isAdmin: true,
         createdAt: true,
       },
+      orderBy: {
+        createdAt: "asc",
+      },
     });
 
     return Response.json(users, { status: 200 });
