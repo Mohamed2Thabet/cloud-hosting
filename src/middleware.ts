@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
+import { jwtVerify } from "jose";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const jwtToken = request.cookies.get("token");
   const token = jwtToken?.value;
   const { pathname } = request.nextUrl;
@@ -32,12 +32,9 @@ export function middleware(request: NextRequest) {
     // Admin authorization check
     if (pathname.startsWith("/admin")) {
       try {
-        const decoded = jwt.verify(
-          token,
-          process.env.JWT_SECRET!
-        ) as { isAdmin: boolean };
-        console.log(decoded);
-        if (!decoded.isAdmin) {
+        const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+        const { payload } = await jwtVerify(token, secret);
+        if (payload.isAdmin !== true) {
           return NextResponse.redirect(new URL("/", request.url));
         }
       } catch {
